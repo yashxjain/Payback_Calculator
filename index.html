@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Payback Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+        color: #666;
+      }
+
+      .calculator {
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+        margin: 10px 0;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      button {
+        background-color: #0074cc;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+
+      button:hover {
+        background-color: #0056a5;
+      }
+
+      h2 {
+        margin: 20px 0 10px;
+      }
+
+      #paybackResult {
+        font-weight: bold;
+        color: #0074cc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Payback Calculator</h1>
+    <p>
+      Enter your initial investment and monthly savings to calculate payback
+      period.
+    </p>
+
+    <div class="calculator">
+      <label for="investment">Initial Investment ($):</label>
+      <input type="number" id="investment" />
+
+      <label for="savings">Monthly Savings ($):</label>
+      <input type="number" id="savings" />
+
+      <button onclick="calculatePayback()">Calculate Payback</button>
+
+      <h2>Payback Period:</h2>
+      <p id="paybackResult"></p>
+    </div>
+
+    <script>
+      function calculatePayback() {
+        const initialInvestment = parseFloat(
+          document.getElementById("investment").value
+        );
+        const monthlySavings = parseFloat(
+          document.getElementById("savings").value
+        );
+
+        if (isNaN(initialInvestment) || isNaN(monthlySavings)) {
+          document.getElementById("paybackResult").textContent =
+            "Please enter valid numbers.";
+        } else {
+          const paybackPeriod = initialInvestment / monthlySavings;
+          document.getElementById(
+            "paybackResult"
+          ).textContent = `Payback Period: ${paybackPeriod.toFixed(2)} months`;
+        }
+      }
+    </script>
+  </body>
+</html>
